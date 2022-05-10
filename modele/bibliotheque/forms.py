@@ -15,6 +15,15 @@ class LivreForm(ModelForm):
         }
         localized_fields = ('date_parution',)
 
+
+
+class CategorieForm(ModelForm):
+    class Meta:
+        model = models.Categorie
+        fields = ('nom', 'description')
+        labels = {
+            'nom' : _('Nom de la catégorie'),
+        }
 """
 class LivreForm2(ModelForm):
     titre = forms.CharField(label="Titre", max_length=100)

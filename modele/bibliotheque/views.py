@@ -1,18 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import LivreForm
-
 from . import  models
 # Create your views here.
 def ajout(request):
-    if request.method == "POST":
-        form = LivreForm(request)
-        if form.is_valid():
-            livre = form.save()
-            return HttpResponseRedirect("/bibliotheque/")
-        else:
-            return render(request,"bibliotheque/ajout.html",{"form": form})
-    else :
         form = LivreForm()
         return render(request,"bibliotheque/ajout.html",{"form" : form})
 
@@ -47,7 +38,7 @@ def traitementupdate(request, id):
     lform = LivreForm(request.POST)
     if lform.is_valid():
         livre = lform.save(commit=False)
-        livre.id = id;
+        livre.id = id
         livre.save()
         return HttpResponseRedirect("/bibliotheque/")
     else:

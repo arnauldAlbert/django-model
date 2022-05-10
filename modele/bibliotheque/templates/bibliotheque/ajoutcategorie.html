@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    {% load static %}
-    <link href="{%static 'index.css' %}" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <form method="post" action="/bibliotheque/traitement/">
+    <form method="post" action="/bibliotheque/traitementcategorie/">
         {% csrf_token %} <!-- code permettant de protéger votre application en évitant
 de rejouer un formulaire avec des droits différents -->
         {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste
