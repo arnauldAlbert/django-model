@@ -5,8 +5,8 @@ from . import views, categorie_views
 urlpatterns = [
     # page pour les livres
     path('indexlivre/',views.index),
-    path('ajout/',views.ajout),
-    path("traitement/",views.traitement),
+    path('ajout/<int:id>/',views.ajout),
+    path("traitement/<int:id>/",views.traitement),
     path("affiche/<int:id>/",views.affiche),
     path("delete/<int:id>/",views.delete),
     path("update/<int:id>/",views.update),

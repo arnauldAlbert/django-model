@@ -23,7 +23,8 @@ def index(request):
 
 def affiche(request, id):
     categorie = models.Categorie.objects.get(pk=id)
-    return render(request,"bibliotheque/categorie/affiche.html",{"categorie" : categorie})
+    liste = models.Livre.objects.filter(categorie_id = id)
+    return render(request,"bibliotheque/categorie/affiche.html",{"categorie" : categorie, "liste" : liste})
 
 def delete(request, id):
     categorie = models.Categorie.objects.get(pk=id)

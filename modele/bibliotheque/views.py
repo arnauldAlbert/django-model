@@ -3,14 +3,18 @@ from django.http import HttpResponseRedirect
 from .forms import LivreForm
 from . import  models
 # Create your views here.
-def ajout(request):
+def ajout(request,id):
         form = LivreForm()
-        return render(request,"bibliotheque/livre/ajout.html",{"form" : form})
+        return render(request,"bibliotheque/livre/ajout.html",{"form" : form, "id": id})
 
-def traitement(request):
+def traitement(request,id):
+    categorie = models.Categorie.objects.get(pk=id)
     lform = LivreForm(request.POST)
     if lform.is_valid():
-        livre = lform.save()
+        livre = lform.save(commit=False)
+        livre.categorie = categorie
+        livre.categorie_id = id
+        livre.save()
         return HttpResponseRedirect("/bibliotheque/indexlivre/")
     else:
         return render(request,"bibliotheque/livre/ajout.html",{"form": lform})

@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ajout catégorie </title>
-</head>
-<body>
+{% extends 'bibliotheque/main.html' %}
+{% block title %}
+Index du site
+{% endblock %}
+
+{% block content %}
 <a href="/bibliotheque/ajoutcategorie/"> ajouter une catégorie </a>
  <ol>
         {% for l in liste %}
@@ -13,5 +12,4 @@
             </li>
         {%endfor%}
     </ol>
-</body>
-</html>
+{% endblock %}

@@ -1,12 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> fiche {{categorie.nom}}</title>
-</head>
-<body>
+{% extends 'bibliotheque/main.html' %}
+{% block title %}
+Index du site
+{% endblock %}
+
+{% block content %}
 <h1> {{categorie.nom}} </h1>
 <p> {{categorie.description}} </p>
+<a href="/bibliotheque/ajout/{{categorie.id}}/"> ajouter un livre </a>
 
-</body>
-</html>
+<ol>
+    Liste des livres de la catégories
+    {% for l in liste %}
+        <li> {{l.titre}} </li>
+    {% endfor %}
+
+</ol>
+{% endblock %}
