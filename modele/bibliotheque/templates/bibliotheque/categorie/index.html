@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajout catégorie </title>
+</head>
+<body>
+<a href="/bibliotheque/ajoutcategorie/"> ajouter une catégorie </a>
+ <ol>
+        {% for l in liste %}
+            <li> {{l}}  <a href="/bibliotheque/affichecategorie/{{l.id}}/"> afficher les détails </a> <a href="/bibliotheque/deletecategorie/{{l.id}}/"> effacer </a>
+                <a href="/bibliotheque/updatecategorie/{{l.id}}/"> mise à jour </a>
+            </li>
+        {%endfor%}
+    </ol>
+</body>
+</html>

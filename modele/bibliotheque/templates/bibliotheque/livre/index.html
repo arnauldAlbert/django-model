@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/bibliotheque/ajout/"> ajouter un livre </a>
+ <ol>
+        {% for l in liste %}
+            <li> {{l}} date de parution {{l.date_parution|date:"d/m/Y"}} <a href="/bibliotheque/affiche/{{l.id}}/"> afficher les détails </a> <a href="/bibliotheque/delete/{{l.id}}/"> effacer </a>
+                <a href="/bibliotheque/update/{{l.id}}/"> mise à jour </a></li>
+        {%endfor%}
+    </ol>
+</body>
+</html>

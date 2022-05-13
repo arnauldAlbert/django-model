@@ -5,34 +5,34 @@ from . import  models
 # Create your views here.
 def ajout(request):
         form = LivreForm()
-        return render(request,"bibliotheque/ajout.html",{"form" : form})
+        return render(request,"bibliotheque/livre/ajout.html",{"form" : form})
 
 def traitement(request):
     lform = LivreForm(request.POST)
     if lform.is_valid():
         livre = lform.save()
-        return HttpResponseRedirect("/bibliotheque/")
+        return HttpResponseRedirect("/bibliotheque/indexlivre/")
     else:
-        return render(request,"bibliotheque/ajout.html",{"form": lform})
+        return render(request,"bibliotheque/livre/ajout.html",{"form": lform})
 
 
 def index(request):
     liste = list(models.Livre.objects.all())
-    return render(request, 'bibliotheque/index.html', {'liste': liste})
+    return render(request, 'bibliotheque/livre/index.html', {'liste': liste})
 
 def affiche(request, id):
     livre = models.Livre.objects.get(pk=id)
-    return render(request,"bibliotheque/affiche.html",{"livre" : livre})
+    return render(request,"bibliotheque/livre/affiche.html",{"livre" : livre})
 
 def delete(request, id):
     livre = models.Livre.objects.get(pk=id)
     livre.delete()
-    return HttpResponseRedirect("/bibliotheque/")
+    return HttpResponseRedirect("/bibliotheque/indexlivre/")
 
 def update(request, id):
     livre = models.Livre.objects.get(pk=id)
     lform = LivreForm(livre.dico())
-    return render(request, "bibliotheque/update.html", {"form": lform,"id":id})
+    return render(request, "bibliotheque/livre/update.html", {"form": lform,"id":id})
 
 def traitementupdate(request, id):
     lform = LivreForm(request.POST)
@@ -40,6 +40,6 @@ def traitementupdate(request, id):
         livre = lform.save(commit=False)
         livre.id = id
         livre.save()
-        return HttpResponseRedirect("/bibliotheque/")
+        return HttpResponseRedirect("/bibliotheque/indexlivre/")
     else:
-        return render(request, "bibliotheque/update.html", {"form": lform, "id": id})
+        return render(request, "bibliotheque/livre/update.html", {"form": lform, "id": id})
