@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 
 class Livre(models.Model): #déclare la classe Livre héritant de la classe Model, classe de base des modèles
@@ -9,6 +8,7 @@ class Livre(models.Model): #déclare la classe Livre héritant de la classe Mode
     nombre_pages = models.IntegerField(blank=False) # champs de type entier devant être obligatoirement rempli
     resume = models.TextField(null = True, blank = True) # champs de type text long
     categorie = models.ForeignKey("categorie", on_delete=models.CASCADE, default=None)
+
 
     def __str__(self):
         chaine = f"{self.titre} écrit par {self.auteur} avec {self.nombre_pages} pages"
@@ -26,3 +26,17 @@ class Categorie(models.Model):
 
     def dico(self):
         return {"nom": self.nom, "description": self.description}
+
+class Editeur(models.Model):
+    nom = models.CharField(max_length=100, blank=False)
+ #   logo = models.ImageField()
+    livreEdite=models.ManyToManyField(Livre)
+
+    def __str__(self):
+        return self.nom
+
+
+class editeurhaslivre(models.Model):
+    editeur = models.ForeignKey(Editeur, on_delete=models.DO_NOTHING)
+    livre = models.ForeignKey(Livre,on_delete=models.DO_NOTHING)
+

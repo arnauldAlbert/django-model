@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> fiche {{editeur.nom}}</title>
+</head>
+<body>
+<h1> {{editeur.nom}} {{editeur.id}} </h1>
+<ol> <h3> Liste des livres édités </h3>
+   {% for l in listeedi %}
+     <li> {{ l }} </li>
+    {% endfor %}
+</ol>
+<form method="POST" action="/bibliotheque/editeurajoutlivre/{{editeur.id}}/">
+    {% csrf_token %}
+    {% if listeli != None %}
+    <label> liste des livres </label>
+    <select name="livres" multiple>
+        {% for l in listeli %}
+            <option value="{{l.id}}"> {{l.titre}}</option>
+        {% endfor %}
+    </select>
+    {% endif %}
+    <input type="submit" value="ajouter les livres">
+</form>
+</body>
+</html>

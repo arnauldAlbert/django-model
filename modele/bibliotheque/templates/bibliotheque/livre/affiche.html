@@ -9,5 +9,11 @@
 <p> Ce livre est écrit par {{livre.auteur}} et est paru le {{livre.date_parution}}. Il possède {{livre.nombre_pages}} pages  de la catégorie {{livre.categorie}} </p>
 <h3> résumé </h3>
 <p> {{livre.resume}}</p>
+<ol> liste des éditeurs
+{% for l in liste %}
+    <li> {{ l.nom }} </li>
+  {% endfor %}
+</ol>
+
 </body>
 </html>

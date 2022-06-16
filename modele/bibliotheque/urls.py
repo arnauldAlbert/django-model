@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views, categorie_views
+from . import views, categorie_views, editeur_views
 
 
 urlpatterns = [
@@ -19,4 +19,8 @@ urlpatterns = [
     path("deletecategorie/<int:id>/",categorie_views.delete),
     path("updatecategorie/<int:id>/",categorie_views.update),
     path("traitementupdatecategorie/<int:id>/",categorie_views.traitementupdate),
+    path("ajoutediteur/",editeur_views.ajout),
+    path("editeur-traitement/",editeur_views.traitement),
+    path("afficheediteur/<int:id>/",editeur_views.affiche),
+    path("editeurajoutlivre/<int:id>/", editeur_views.ajoutlivre),
 ]

@@ -11,7 +11,7 @@ Index du site
 <ol>
     Liste des livres de la catégories
     {% for l in liste %}
-        <li> {{l.titre}} </li>
+        <li> {{l.titre}} <a href="/bibliotheque/affiche/{{l.id}}/"> afficher </a> </li>
     {% endfor %}
 
 </ol>

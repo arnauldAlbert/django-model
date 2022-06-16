@@ -26,7 +26,8 @@ def index(request):
 
 def affiche(request, id):
     livre = models.Livre.objects.get(pk=id)
-    return render(request,"bibliotheque/livre/affiche.html",{"livre" : livre})
+    liste = livre.editeur_set.all()
+    return render(request,"bibliotheque/livre/affiche.html",{"livre" : livre, "liste" :liste})
 
 def delete(request, id):
     livre = models.Livre.objects.get(pk=id)

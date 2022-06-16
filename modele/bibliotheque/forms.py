@@ -22,3 +22,11 @@ class CategorieForm(ModelForm):
         labels = {
             'nom' : _('Nom de la catégorie'),
         }
+
+class EditeurForm(ModelForm):
+    class Meta:
+        model = models.Editeur
+        fields = ('nom',)
+        labels = {
+            'nom' : _("Nom de l'éditeur"),
+        }
