@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="Fr-fr">
+<head>
+    <meta charset="UTF-8">
+    <title>authentification</title>
+</head>
+<body>
+    <h1> page de login </h1>
+    <p> message {{msg}} </p>
+    <form method="POST" action="/bibliotheque/login/" >
+        {% csrf_token %}
+        <label> username </label>
+        <input type="text" name="username" size="100">
+        <label> password </label>
+        <input type="password" name="password" size="100">
+        <input type="submit" value="identifiez moi">
+    </form>
+</body>
+</html>

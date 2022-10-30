@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views, categorie_views, editeur_views
+from . import views, categorie_views, editeur_views, login_views
 
 
 urlpatterns = [
@@ -23,4 +23,7 @@ urlpatterns = [
     path("editeur-traitement/",editeur_views.traitement),
     path("afficheediteur/<int:id>/",editeur_views.affiche),
     path("editeurajoutlivre/<int:id>/", editeur_views.ajoutlivre),
+    path("accueil/",login_views.accueil),
+    path("login/",login_views.login_view),
+    path("logout/",login_views.logout_view),
 ]

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import CategorieForm
+from django.conf import settings
+from django.shortcuts import redirect
 
 from . import  models
 
@@ -18,6 +20,9 @@ def traitement(request):
 
 
 def index(request):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+    # ...
     liste = list(models.Categorie.objects.all())
     return render(request, 'bibliotheque/categorie/index.html', {'liste': liste})
 
